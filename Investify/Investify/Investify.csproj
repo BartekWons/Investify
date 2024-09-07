@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Icons\CloseIcons\close_icon_hover.png" />
+    <None Remove="Images\Icons\close_icon.png" />
+    <None Remove="Images\Icons\MinimizeIcon\minimize_icon.png" />
+    <None Remove="Images\Icons\MinimizeIcon\minimize_icon_hover.png" />
+    <None Remove="Images\Logo\investify_logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Fonts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Icons\CloseIcons\close_icon.png" />
+    <Resource Include="Images\Icons\CloseIcons\close_icon_hover.png" />
+    <Resource Include="Images\Icons\MinimizeIcon\minimize_icon.png" />
+    <Resource Include="Images\Icons\MinimizeIcon\minimize_icon_hover.png" />
+    <Resource Include="Images\Logo\investify_logo.png" />
+  </ItemGroup>
+
+</Project>
