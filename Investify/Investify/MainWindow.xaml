@@ -26,11 +26,12 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                <!--<Grid Grid.Row="0" 
+                      Grid.ColumnSpan="2">
 
                     <Grid.InputBindings>
                         <MouseBinding Gesture="LeftClick" Command="{Binding DragWindowCommand}"/>
@@ -64,19 +65,89 @@
                     <Button Grid.Column="17"
                             Style="{StaticResource CloseButtonTheme}"
                             Command="{Binding CloseCommand}"/>
-                </Grid>
+                </Grid>-->
 
+                <Border Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Background="#f2f2f2"
+                        CornerRadius="10,10,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="40"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="16"
+                            Style="{StaticResource MinimizeButton}"
+                            Command="{Binding MinimizeCommand}"
+                                ToolTip="Minimize"/>
+
+                        <Button Grid.Column="17"
+                            Style="{StaticResource CloseButtonTheme}"
+                            Command="{Binding CloseCommand}"
+                                ToolTip="Close"/>
+                    </Grid>
+                </Border>
 
                 <Grid Grid.Column="0" 
-                      Grid.RowSpan="2"
-                      Background="Wheat">
-                    
+                      Grid.Row="1"
+                      Background="#f2f2f2">
+
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
                         <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition Height="60"/>
                     </Grid.RowDefinitions>
-                    <Image Grid.Row="0" Source="\Images\Logo\investify_logo.png"/>
+
+                    <Image Grid.Row="0" 
+                           Source="\Images\Logo\investify_logo.png"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="10"
+                           RenderOptions.BitmapScalingMode="HighQuality"/>
+
+                    <StackPanel Orientation="Vertical" Grid.Row="1">
+                        <RadioButton Content="Home"
+                                     IsChecked="True"
+                                     Style="{StaticResource MenuButtonTheme}"/>
+
+                        <RadioButton Content="Search"
+                                     Style="{StaticResource MenuButtonTheme}"/>
+
+                        <RadioButton Content="Favourites"
+                                     Style="{StaticResource MenuButtonTheme}"/>
+
+                        <RadioButton Content="Settings"
+                                     Style="{StaticResource MenuButtonTheme}"/>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="2">
+                        <Button Content="Log In"
+                                Style="{StaticResource LogInButtonTheme}"
+                                ToolTip="Log In"
+                                Command="{Binding LogInCommand}"/>
+
+                        <Button Content="Sign up"
+                                Style="{StaticResource SignUpButtonTheme}"
+                                ToolTip="Sign Up"/>
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Border>

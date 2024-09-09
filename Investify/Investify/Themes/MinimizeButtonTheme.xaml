@@ -7,7 +7,7 @@
     <Style x:Key="MinimizeButton"
            TargetType="{x:Type Button}"
            BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="Background" Value="White"/>
+        <Setter Property="Background" Value="#f2f2f2"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Template">
             <Setter.Value>

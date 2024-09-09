@@ -1,0 +1,63 @@
+﻿<Window x:Class="Investify.MVVM.View.LogInDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Investify.MVVM.View"
+        xmlns:viewModel="clr-namespace:Investify.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="LogInDialogView" Height="320" Width="450"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+
+    <Window.DataContext>
+        <viewModel:LogInViewModel/>
+    </Window.DataContext>
+    
+    <Border Background="#f2f2f2"
+            CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="8"
+                        Style="{StaticResource CloseButtonTheme}"
+                        Command="{Binding CloseCommand}"/>
+            </Grid>
+
+            <StackPanel Grid.Row="1"
+                        Orientation="Vertical">
+                <TextBox Width="100"
+                         Height="40"
+                         Style="{StaticResource TextBoxTheme}"/>
+                <TextBox Width="100"
+                         Style="{StaticResource TextBoxTheme}"/>
+
+                <Button Content="Log In"
+                        Width="70"
+                        Height="40"
+                        FontSize="17"
+                        Command="{Binding ExecuteLogInCommand}"
+                        Style="{StaticResource RedButtonTheme}"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>
