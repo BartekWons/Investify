@@ -48,8 +48,8 @@ namespace Investify.MVVM.ViewModel
 
         private void LogIn()
         {
-            Debug.WriteLine(email);
-            Debug.WriteLine(password);
+            Debug.WriteLine(Email);
+            Debug.WriteLine(Password);
         }
     }
 }

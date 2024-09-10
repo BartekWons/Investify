@@ -45,18 +45,28 @@
 
             <StackPanel Grid.Row="1"
                         Orientation="Vertical">
-                <TextBox Width="100"
-                         Height="40"
-                         Style="{StaticResource TextBoxTheme}"/>
-                <TextBox Width="100"
-                         Style="{StaticResource TextBoxTheme}"/>
+                <TextBox Width="250"
+                         FontSize="17"
+                         Tag="Email"
+                         Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TextBoxTheme}"
+                         Margin="10"/>
+                
+                <TextBox Width="250"
+                         FontSize="17"
+                         Tag="Password"
+                         Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TextBoxTheme}"
+                         Margin="10"/>
 
                 <Button Content="Log In"
                         Width="70"
                         Height="40"
                         FontSize="17"
+                        ToolTip="Log in"
                         Command="{Binding ExecuteLogInCommand}"
-                        Style="{StaticResource RedButtonTheme}"/>
+                        Style="{StaticResource RedButtonTheme}"
+                        Margin="10"/>
             </StackPanel>
         </Grid>
     </Border>
