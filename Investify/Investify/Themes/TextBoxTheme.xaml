@@ -9,7 +9,7 @@
                     <Border BorderBrush="Blue" 
                             Background="White">
                         <TextBox>
-                            <
+                            
                         </TextBox>
 
                     </Border>

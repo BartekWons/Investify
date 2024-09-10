@@ -30,43 +30,6 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <!--<Grid Grid.Row="0" 
-                      Grid.ColumnSpan="2">
-
-                    <Grid.InputBindings>
-                        <MouseBinding Gesture="LeftClick" Command="{Binding DragWindowCommand}"/>
-                    </Grid.InputBindings>
-                    
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="40"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Button Grid.Column="16"
-                            Style="{StaticResource MinimizeButton}"
-                            Command="{Binding MinimizeCommand}"/>
-
-                    <Button Grid.Column="17"
-                            Style="{StaticResource CloseButtonTheme}"
-                            Command="{Binding CloseCommand}"/>
-                </Grid>-->
-
                 <Border Grid.Row="0"
                         Grid.ColumnSpan="2"
                         Background="#f2f2f2"
