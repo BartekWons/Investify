@@ -1,0 +1,103 @@
+﻿<Window x:Class="Investify.MVVM.View.SignUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Investify.MVVM.View"
+        xmlns:viewModel="clr-namespace:Investify.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="SignUpWindow" Height="600" Width="500"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+
+    <Window.DataContext>
+        <viewModel:SignUpViewModel/>
+    </Window.DataContext>
+    
+    <Border CornerRadius="10"
+            Background="#f2f2f2">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="6"
+                        Style="{StaticResource CloseButtonTheme}"
+                        Command="{Binding CloseCommand}"/>
+            </Grid>
+
+            <StackPanel Grid.Row="1"
+                        Orientation="Vertical">
+
+                <TextBox Width="250"
+                         FontSize="17"
+                         Tag="Firstname"
+                         Style="{StaticResource TextBoxTheme}"
+                         Margin="10"/>
+
+                <TextBox Width="250"
+                         FontSize="17"
+                         Tag="Lastname"
+                         Style="{StaticResource TextBoxTheme}"
+                         Margin="10"/>
+
+                <TextBox Width="250"
+                         FontSize="17"
+                         Tag="Email"
+                         Style="{StaticResource TextBoxTheme}"
+                         Margin="10"/>
+                
+                <TextBox Width="250"
+                         FontSize="17"
+                         Tag="Password"
+                         Style="{StaticResource TextBoxTheme}"
+                         Margin="10"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    
+                    <TextBox Width="57"
+                         FontSize="17"
+                         Tag="Day"
+                         Style="{StaticResource TextBoxTheme}"
+                         Margin="10"/>
+
+                    <ComboBox Height="40"
+                              FontSize="17"
+                              ItemsSource="{Binding Months}"
+                              SelectedIndex="{Binding SelectedMonth}"
+                              Style="{StaticResource ComboBoxTheme}"/>
+
+                    <TextBox Width="57"
+                         FontSize="17"
+                         Tag="Year"
+                         Style="{StaticResource TextBoxTheme}"
+                         Margin="10"/>
+                </StackPanel>
+
+                <Button Content="Sign Up"
+                        Height="40"
+                        Width="75"
+                        ToolTip="Sign up"
+                        FontSize="17"
+                        Style="{StaticResource RedButtonTheme}"
+                        />
+                
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

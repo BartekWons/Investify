@@ -17,7 +17,7 @@
     </Window.DataContext>
     
     <Grid>
-        <Border Background="White"
+        <Border Background="#f2f2f2"
                 CornerRadius="10">
             <Grid>
                 <Grid.RowDefinitions>
@@ -31,9 +31,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Border Grid.Row="0"
-                        Grid.ColumnSpan="2"
-                        Background="#f2f2f2"
-                        CornerRadius="10,10,0,0">
+                        Grid.ColumnSpan="2">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -70,7 +68,7 @@
 
                 <Grid Grid.Column="0" 
                       Grid.Row="1"
-                      Background="#f2f2f2">
+                      Background="Transparent">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"/>
@@ -88,16 +86,20 @@
                     <StackPanel Orientation="Vertical" Grid.Row="1">
                         <RadioButton Content="Home"
                                      IsChecked="True"
-                                     Style="{StaticResource MenuButtonTheme}"/>
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding SwitchToHomeViewCommand}"/>
 
                         <RadioButton Content="Search"
-                                     Style="{StaticResource MenuButtonTheme}"/>
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding SwitchToSearchViewCommand}"/>
 
-                        <RadioButton Content="Favourites"
-                                     Style="{StaticResource MenuButtonTheme}"/>
+                        <RadioButton Content="Favourite"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding SwitchToFavouriteViewCommand}"/>
 
                         <RadioButton Content="Settings"
-                                     Style="{StaticResource MenuButtonTheme}"/>
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     Command="{Binding SwitchToSettingsViewCommand}"/>
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal"
@@ -109,9 +111,15 @@
 
                         <Button Content="Sign up"
                                 Style="{StaticResource SignUpButtonTheme}"
-                                ToolTip="Sign Up"/>
+                                ToolTip="Sign Up"
+                                Command="{Binding SignUpCommand}"/>
                     </StackPanel>
                 </Grid>
+
+                <ContentControl Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="10"
+                                Content="{Binding CurrentView}"/>
             </Grid>
         </Border>
     </Grid>

@@ -1,7 +1,5 @@
 ﻿using Investify.Core;
-using Investify.MVVM.View;
 using System.Diagnostics;
-using System.Windows;
 
 namespace Investify.MVVM.ViewModel
 {
