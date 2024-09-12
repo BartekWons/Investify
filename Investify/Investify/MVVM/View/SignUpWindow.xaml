@@ -76,7 +76,7 @@
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
-                    <ComboBox Height="40"
+                    <ComboBox Height="46"
                               FontSize="17"
                               ItemsSource="{Binding Months}"
                               SelectedIndex="{Binding SelectedMonth}"
