@@ -18,7 +18,9 @@
     </Window.DataContext>
     
     <Border CornerRadius="10"
-            Background="#f2f2f2">
+            Background="#f2f2f2"
+            BorderBrush="#5f6368"
+            BorderThickness="2">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="35"/>
@@ -43,6 +45,9 @@
 
             <StackPanel Grid.Row="1"
                         Orientation="Vertical">
+                <Image Source="\Images\Logo\sign_up.png"
+                       Height="100"
+                       RenderOptions.BitmapScalingMode="HighQuality"/>
 
                 <TextBox Width="250"
                          FontSize="17"

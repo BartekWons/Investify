@@ -70,7 +70,7 @@ namespace Investify.MVVM.ViewModel
                 blurEffect.Radius = 5;
                 mainWindow.Effect = blurEffect;
 
-                LogInDialogView window = new LogInDialogView();
+                LogInView window = new LogInView();
                 window.Owner = Application.Current.MainWindow;
                 window.ShowDialog();
 

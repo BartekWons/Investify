@@ -46,6 +46,7 @@ namespace Investify.MVVM.ViewModel
 
         private void LogIn()
         {
+            Debug.WriteLine("Log in");
             Debug.WriteLine(Email);
             Debug.WriteLine(Password);
         }

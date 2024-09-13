@@ -3,9 +3,9 @@ using System.Windows;
 
 namespace Investify.MVVM.View
 {
-    public partial class LogInDialogView : Window
+    public partial class LogInView : Window
     {
-        public LogInDialogView()
+        public LogInView()
         {
             InitializeComponent();
             if (DataContext is LogInViewModel viewModel)

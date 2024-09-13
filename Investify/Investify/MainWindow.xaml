@@ -31,7 +31,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Grid Grid.Row="0"
-                      Grid.ColumnSpan="2">
+                      Grid.ColumnSpan="2"
+                      Background="Transparent">
+
+                    <Grid.InputBindings>
+                        <MouseBinding MouseAction="LeftClick" Command="{Binding DragWindowCommand}"/>
+                    </Grid.InputBindings>
+                    
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
