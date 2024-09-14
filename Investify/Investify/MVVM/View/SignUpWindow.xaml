@@ -52,51 +52,59 @@
                 <TextBox Width="250"
                          FontSize="17"
                          Tag="Firstname"
+                         Text="{Binding Firstname}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
                 <TextBox Width="250"
                          FontSize="17"
                          Tag="Lastname"
+                         Text="{Binding Lastname}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
                 <TextBox Width="250"
                          FontSize="17"
                          Tag="Email"
+                         Text="{Binding Email}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
                 
                 <TextBox Width="250"
                          FontSize="17"
                          Tag="Password"
+                         Text="{Binding Password}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     
                     <TextBox Width="57"
-                         FontSize="17"
-                         Tag="Day"
-                         Style="{StaticResource TextBoxTheme}"
-                         Margin="10"/>
+                             FontSize="17"
+                             Tag="Day"
+                             Text="{Binding DayOfBirth}"
+                             Style="{StaticResource TextBoxTheme}"
+                             Margin="10"/>
 
                     <ComboBox Height="46"
                               FontSize="17"
                               ItemsSource="{Binding Months}"
-                              SelectedIndex="{Binding SelectedMonth}"
+                              SelectedIndex="{Binding MonthOfBirth}"
                               Style="{StaticResource ComboBoxTheme}"/>
 
                     <TextBox Width="57"
-                         FontSize="17"
-                         Tag="Year"
-                         Style="{StaticResource TextBoxTheme}"
-                         Margin="10"/>
+                             FontSize="17"
+                             Tag="Year"
+                             Text="{Binding YearOfBirth}"
+                             Style="{StaticResource TextBoxTheme}"
+                             Margin="10"/>
+                    
                 </StackPanel>
 
                 <Button Content="Sign Up"
                         Height="40"
                         Width="75"
+                        Command="{Binding SignUpCommand}"
                         ToolTip="Sign up"
                         FontSize="17"
                         Style="{StaticResource RedButtonTheme}"

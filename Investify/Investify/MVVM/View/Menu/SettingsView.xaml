@@ -4,8 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Investify.MVVM.View.Menu"
+             xmlns:viewModel="clr-namespace:Investify.MVVM.ViewModel.Menu"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <viewModel:SettingsViewModel/>
+    </UserControl.DataContext>
+    
     <Grid>
         <TabControl>
             <TabItem Header="General"
@@ -18,6 +24,38 @@
             <TabItem Header="Server"
                      Background="Transparent">
 
+                <StackPanel Orientation="Vertical"
+                            HorizontalAlignment="Left"
+                            Width="200"
+                            Margin="20">
+                    <TextBox Tag="Server"
+                             Text="{Binding ServerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Style="{StaticResource TextBoxTheme}"
+                             Margin="0,0,0,10"/>
+
+                    <TextBox Tag="User"
+                             Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Style="{StaticResource TextBoxTheme}"
+                             Margin="0,0,0,10"/>
+
+                    <TextBox Tag="Password"
+                             Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Style="{StaticResource TextBoxTheme}"
+                             Margin="0,0,0,10"/>
+
+                    <TextBox Tag="Database"
+                             Text="{Binding DatabaseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Style="{StaticResource TextBoxTheme}"
+                             Margin="0,0,0,10"/>
+
+                    <Button Content="Change"
+                            Width="60"
+                            Command="{Binding ChangeServerCommand}"
+                            Style="{StaticResource RedButtonTheme}"/>
+                </StackPanel>
+
+                
+                
             </TabItem>
         </TabControl>
     </Grid>

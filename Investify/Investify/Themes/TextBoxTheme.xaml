@@ -29,7 +29,6 @@
                                        Visibility="Collapsed"/>
                         </Grid>
                     </Border>
-
                     <ControlTemplate.Triggers>
                         <Trigger Property="Text" Value="">
                             <Setter TargetName="Placeholder" Property="Visibility" Value="Visible"/>
