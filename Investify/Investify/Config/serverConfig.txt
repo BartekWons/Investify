@@ -1,1 +1,1 @@
-server=;users=;pwd=;database=x
+server=;users=;pwd=;database=
