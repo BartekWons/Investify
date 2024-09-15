@@ -1,4 +1,5 @@
 ﻿using Investify.Core;
+using Investify.MVVM.Model;
 using System.Diagnostics;
 
 namespace Investify.MVVM.ViewModel
@@ -41,14 +42,17 @@ namespace Investify.MVVM.ViewModel
                 CloseAction?.Invoke();
             });
 
-            ExecuteLogInCommand = new RelayCommand(o => LogIn());
+            ExecuteLogInCommand = new RelayCommand(async o => await LogIn());
         }
 
-        private void LogIn()
+        private async Task LogIn()
         {
-            Debug.WriteLine("Log in");
-            Debug.WriteLine(Email);
-            Debug.WriteLine(Password);
+            var data = await Database.GetUsers();
+
+            foreach (var user in data)
+            {
+                Debug.WriteLine(user);
+            }
         }
     }
 }

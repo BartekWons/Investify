@@ -1,4 +1,6 @@
 ﻿using Investify.Core;
+using Investify.MVVM.Model;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
 namespace Investify.MVVM.ViewModel
@@ -34,6 +36,19 @@ namespace Investify.MVVM.ViewModel
             }
         }
 
+        private string _login;
+
+        public string Login
+        {
+            get { return _login; }
+            set
+            {
+                _login = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         private string _email;
 
         public string Email
@@ -51,9 +66,9 @@ namespace Investify.MVVM.ViewModel
         public string Password
         {
             get { return _password; }
-            set 
-            { 
-                _password = value; 
+            set
+            {
+                _password = value;
                 OnPropertyChanged();
             }
         }
@@ -104,12 +119,30 @@ namespace Investify.MVVM.ViewModel
                 CloseAction?.Invoke();
             });
 
-            SignUpCommand = new RelayCommand(o => SignUp());
+            SignUpCommand = new RelayCommand(async o => await SignUp());
         }
 
-        private void SignUp()
+        private async Task SignUp()
         {
-            Debug.Write("dawdwa");
+            var salt = User.GetSalt(16);
+            var hashedPassword = User.SHA512Hashing(Password, salt);
+            User user = new User()
+            {
+                Firstname = this.Firstname,
+                Lastname = this.Lastname,
+                Login = this.Login,
+                Email = this.Email,
+                Password = hashedPassword,
+                Salt = salt,
+                BirthDate = new DateTime(
+                    Convert.ToInt16(YearOfBirth),
+                    MonthOfBirth + 1,
+                    Convert.ToInt16(DayOfBirth))
+            };
+
+            Debug.WriteLine(user);
+
+            await Database.AddUser(user);
         }
     }
 }

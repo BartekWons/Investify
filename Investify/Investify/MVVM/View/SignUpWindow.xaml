@@ -52,28 +52,35 @@
                 <TextBox Width="250"
                          FontSize="17"
                          Tag="Firstname"
-                         Text="{Binding Firstname}"
+                         Text="{Binding Firstname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
                 <TextBox Width="250"
                          FontSize="17"
                          Tag="Lastname"
-                         Text="{Binding Lastname}"
+                         Text="{Binding Lastname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Style="{StaticResource TextBoxTheme}"
+                         Margin="10"/>
+
+                <TextBox Width="250"
+                         FontSize="17"
+                         Tag="Login"
+                         Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
                 <TextBox Width="250"
                          FontSize="17"
                          Tag="Email"
-                         Text="{Binding Email}"
+                         Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
                 
                 <TextBox Width="250"
                          FontSize="17"
                          Tag="Password"
-                         Text="{Binding Password}"
+                         Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
@@ -82,11 +89,12 @@
                     <TextBox Width="57"
                              FontSize="17"
                              Tag="Day"
-                             Text="{Binding DayOfBirth}"
+                             Text="{Binding DayOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              Style="{StaticResource TextBoxTheme}"
                              Margin="10"/>
 
                     <ComboBox Height="46"
+                              Width="130"
                               FontSize="17"
                               ItemsSource="{Binding Months}"
                               SelectedIndex="{Binding MonthOfBirth}"
@@ -95,7 +103,7 @@
                     <TextBox Width="57"
                              FontSize="17"
                              Tag="Year"
-                             Text="{Binding YearOfBirth}"
+                             Text="{Binding YearOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              Style="{StaticResource TextBoxTheme}"
                              Margin="10"/>
                     
@@ -103,12 +111,11 @@
 
                 <Button Content="Sign Up"
                         Height="40"
-                        Width="75"
+                        Width="90"
                         Command="{Binding SignUpCommand}"
                         ToolTip="Sign up"
                         FontSize="17"
-                        Style="{StaticResource RedButtonTheme}"
-                        />
+                        Style="{StaticResource RedButtonTheme}"/>
                 
             </StackPanel>
         </Grid>

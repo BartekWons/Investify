@@ -1,4 +1,5 @@
 ﻿using Investify.Core;
+using Investify.MVVM.Model;
 using System.Diagnostics;
 
 namespace Investify.MVVM.ViewModel.Menu
@@ -57,14 +58,12 @@ namespace Investify.MVVM.ViewModel.Menu
 
         public SettingsViewModel()
         {
-            ChangeServerCommand = new RelayCommand(o =>
-            {
-                Debug.WriteLine(ServerName);
-                Debug.WriteLine(UserName);
-                Debug.WriteLine(Password);
-                Debug.WriteLine(DatabaseName);
-            });
+            ChangeServerCommand = new RelayCommand(async o => await ChangeServer());
         }
 
+        private async Task ChangeServer()
+        {
+            await Database.ChangeServerData(ServerName, UserName, Password, DatabaseName);
+        }
     }
 }
