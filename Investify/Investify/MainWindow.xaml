@@ -81,7 +81,7 @@
                     </Grid.RowDefinitions>
 
                     <Image Grid.Row="0" 
-                           Source="\Images\Logo\investify_logo.png"
+                           Source="\Assets\Images\Logo\investify_logo.png"
                            HorizontalAlignment="Center"
                            VerticalAlignment="Center"
                            Margin="10"

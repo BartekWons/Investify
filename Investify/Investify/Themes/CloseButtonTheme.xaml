@@ -1,8 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     
-    <BitmapImage x:Key="CloseIcon" UriSource="\Images\Icons\CloseIcons\close_icon.png"/>
-    <BitmapImage x:Key="CloseIconHover" UriSource="\Images\Icons\CloseIcons\close_icon_hover.png"/>
+    <BitmapImage x:Key="CloseIcon" UriSource="\Assets\Images\Icons\CloseIcons\close_icon.png"/>
+    <BitmapImage x:Key="CloseIconHover" UriSource="\Assets\Images\Icons\CloseIcons\close_icon_hover.png"/>
 
     <Style x:Key="CloseButtonTheme"
            TargetType="{x:Type Button}"

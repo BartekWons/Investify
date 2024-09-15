@@ -21,16 +21,29 @@
     <None Remove="Assets\Fonts\Roboto\Roboto-Regular.ttf" />
     <None Remove="Assets\Fonts\Roboto\Roboto-Thin.ttf" />
     <None Remove="Assets\Fonts\Roboto\Roboto-ThinItalic.ttf" />
-    <None Remove="Images\Icons\CloseIcons\close_icon_hover.png" />
-    <None Remove="Images\Icons\close_icon.png" />
-    <None Remove="Images\Icons\LogIn\login_icon.png" />
-    <None Remove="Images\Icons\LogIn\sign_up_icon.png" />
-    <None Remove="Images\Icons\MinimizeIcon\minimize_icon.png" />
-    <None Remove="Images\Icons\MinimizeIcon\minimize_icon_hover.png" />
-    <None Remove="Images\Logo\investify_logo.png" />
-    <None Remove="Images\Logo\log_in.png" />
-    <None Remove="Images\Logo\sign_up.png" />
-    <None Remove="Sounds\click_sound.wav" />
+    <None Remove="Assets\Images\Icons\CloseIcons\close_icon.png" />
+    <None Remove="Assets\Images\Icons\CloseIcons\close_icon_hover.png" />
+    <None Remove="Assets\Images\Icons\favourite_icon.png" />
+    <None Remove="Assets\Images\Icons\LogInButtonIcon\login_icon.png" />
+    <None Remove="Assets\Images\Icons\LogInButtonIcon\sign_up_icon.png" />
+    <None Remove="Assets\Images\Icons\MenuBar\dashboard_icon.png" />
+    <None Remove="Assets\Images\Icons\MenuBar\home_icon.png" />
+    <None Remove="Assets\Images\Icons\MenuBar\settings_icon.png" />
+    <None Remove="Assets\Images\Icons\MinimizeIcon\minimize_icon.png" />
+    <None Remove="Assets\Images\Icons\MinimizeIcon\minimize_icon_hover.png" />
+    <None Remove="Assets\Images\Icons\red_favourite.png" />
+    <None Remove="Assets\Images\Icons\search_icon.png" />
+    <None Remove="Assets\Images\Logo\investify_logo.png" />
+    <None Remove="Assets\Images\Logo\log_in.png" />
+    <None Remove="Assets\Images\Logo\sign_up.png" />
+    <None Remove="Assets\Sounds\click_sound.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\Images\Icons\favourite_icon.png" />
+    <Resource Include="Assets\Images\Icons\LogInButtonIcon\login_icon.png" />
+    <Resource Include="Assets\Images\Icons\LogInButtonIcon\sign_up_icon.png" />
+    <Resource Include="Assets\Images\Icons\MenuBar\settings_icon.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,16 +62,18 @@
     <Resource Include="Assets\Fonts\Roboto\Roboto-Medium.ttf" />
     <Resource Include="Assets\Fonts\Roboto\Roboto-MediumItalic.ttf" />
     <Resource Include="Assets\Fonts\Roboto\Roboto-ThinItalic.ttf" />
-    <Resource Include="Images\Icons\CloseIcons\close_icon.png" />
-    <Resource Include="Images\Icons\CloseIcons\close_icon_hover.png" />
-    <Resource Include="Images\Icons\LogIn\login_icon.png" />
-    <Resource Include="Images\Icons\LogIn\sign_up_icon.png" />
-    <Resource Include="Images\Icons\MinimizeIcon\minimize_icon.png" />
-    <Resource Include="Images\Icons\MinimizeIcon\minimize_icon_hover.png" />
-    <Resource Include="Images\Logo\investify_logo.png" />
-    <Resource Include="Images\Logo\log_in.png" />
-    <Resource Include="Images\Logo\sign_up.png" />
-    <Resource Include="Sounds\click_sound.wav" />
+    <Resource Include="Assets\Images\Icons\CloseIcons\close_icon.png" />
+    <Resource Include="Assets\Images\Icons\CloseIcons\close_icon_hover.png" />
+    <Resource Include="Assets\Images\Icons\MenuBar\dashboard_icon.png" />
+    <Resource Include="Assets\Images\Icons\MenuBar\home_icon.png" />
+    <Resource Include="Assets\Images\Icons\MinimizeIcon\minimize_icon.png" />
+    <Resource Include="Assets\Images\Icons\MinimizeIcon\minimize_icon_hover.png" />
+    <Resource Include="Assets\Images\Icons\red_favourite.png" />
+    <Resource Include="Assets\Images\Icons\search_icon.png" />
+    <Resource Include="Assets\Images\Logo\investify_logo.png" />
+    <Resource Include="Assets\Images\Logo\log_in.png" />
+    <Resource Include="Assets\Images\Logo\sign_up.png" />
+    <Resource Include="Assets\Sounds\click_sound.wav" />
   </ItemGroup>
 
 </Project>

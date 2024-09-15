@@ -45,7 +45,7 @@
 
             <StackPanel Grid.Row="1"
                         Orientation="Vertical">
-                <Image Source="\Images\Logo\sign_up.png"
+                <Image Source="\Assets\Images\Logo\sign_up.png"
                        Height="100"
                        RenderOptions.BitmapScalingMode="HighQuality"/>
 

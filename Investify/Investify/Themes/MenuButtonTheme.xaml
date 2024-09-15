@@ -28,7 +28,7 @@
             </Trigger>
 
             <EventTrigger RoutedEvent="PreviewMouseDown">
-                <SoundPlayerAction Source="\Sounds\click_sound.wav"/>
+                <SoundPlayerAction Source="\Assets\Sounds\click_sound.wav"/>
             </EventTrigger>
         </Style.Triggers>
     </Style>
