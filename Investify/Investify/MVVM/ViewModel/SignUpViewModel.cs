@@ -1,6 +1,5 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model;
-using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 
 namespace Investify.MVVM.ViewModel

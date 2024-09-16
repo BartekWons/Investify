@@ -1,6 +1,9 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model;
+using System.CodeDom;
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
+using System.Windows;
 
 namespace Investify.MVVM.ViewModel
 {
@@ -11,26 +14,26 @@ namespace Investify.MVVM.ViewModel
         public RelayCommand CloseCommand { get; set; }
         public RelayCommand ExecuteLogInCommand { get; set; }
 
-        private string email;
+        private string _login;
 
-        public string Email
+        public string Login
         {
-            get { return email; }
+            get { return _login; }
             set 
             { 
-                email = value;
+                _login = value;
                 OnPropertyChanged();
             }
         }
 
-        private string password;
+        private string _password;
 
         public string Password
         {
-            get { return password; }
+            get { return _password; }
             set 
             {
-               password = value; 
+               _password = value; 
                 OnPropertyChanged();
             }
         }
@@ -47,12 +50,40 @@ namespace Investify.MVVM.ViewModel
 
         private async Task LogIn()
         {
+            try
+            {
+                bool AreComponentsValid = Validation();
+                if (!AreComponentsValid)
+                {
+                    MessageBox.Show("One of components is empty or contains only a whitespace.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var data = await Database.GetUsers();
 
             foreach (var user in data)
             {
                 Debug.WriteLine(user);
             }
+        }
+
+        public bool Validation()
+        {
+            if (Login == null || Password == null)
+            {
+                throw new ArgumentException("One of components' content is null");
+            }
+            if (String.IsNullOrWhiteSpace(Login) || String.IsNullOrWhiteSpace(Password))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

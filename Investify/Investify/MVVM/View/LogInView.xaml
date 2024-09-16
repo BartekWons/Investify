@@ -55,7 +55,7 @@
                 <TextBox Width="250"
                      FontSize="17"
                      Tag="Email"
-                     Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      Style="{StaticResource TextBoxTheme}"
                      Margin="10"/>
 
