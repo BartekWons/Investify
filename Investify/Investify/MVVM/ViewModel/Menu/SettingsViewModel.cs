@@ -1,6 +1,8 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace Investify.MVVM.ViewModel.Menu
 {
@@ -56,14 +58,44 @@ namespace Investify.MVVM.ViewModel.Menu
             }
         }
 
+        public string CurrentServer { get; set; }
+        public string CurrentUser { get; set; }
+        public string CurrentDatabase {  get; set; }
+
         public SettingsViewModel()
         {
+            //GetCurrentServerData();
             ChangeServerCommand = new RelayCommand(async o => await ChangeServer());
         }
 
         private async Task ChangeServer()
         {
             await Database.ChangeServerData(ServerName, UserName, Password, DatabaseName);
+            ServerName = CurrentServer;
+            UserName = CurrentUser;
+            DatabaseName = CurrentDatabase;
+        }
+
+        private void GetCurrentServerData()
+        {
+            var connectionString = Database.ReadServerData();
+
+            if (connectionString == null)
+            {
+                return;
+            }
+
+            Regex pattern = new Regex(@"server=(\w*);users=(\w*);pwd=(\w*);database=(\w*)");
+
+            if (!pattern.IsMatch(connectionString.ToString()))
+            {
+                MessageBox.Show("In valid connection string in serverConfig", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            var match = pattern.Match(connectionString.ToString());
+            CurrentServer = match.Groups[1].Value;
+            CurrentServer = match.Groups[2].Value;
+            CurrentDatabase = match.Groups[3].Value;
         }
     }
 }

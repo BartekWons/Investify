@@ -13,7 +13,7 @@ namespace Investify.MVVM.Model
             _path = GetPath();
         }
 
-        private static string GetPath()
+        public static string GetPath()
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string projectDirectory = Path.GetFullPath(Path.Combine(basePath, @"..\..\..\"));
@@ -27,7 +27,7 @@ namespace Investify.MVVM.Model
             await File.WriteAllTextAsync(_path, connectionString);
         }
 
-        private static async Task<string> ReadServerData()
+        public static async Task<string> ReadServerData()
         {
             var text = await File.ReadAllTextAsync(_path);
             return text.ToString();

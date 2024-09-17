@@ -1,6 +1,11 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model;
+using Microsoft.VisualBasic;
 using System.Diagnostics;
+using System.Reflection.Metadata.Ecma335;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Windows;
 
 namespace Investify.MVVM.ViewModel
 {
@@ -123,6 +128,21 @@ namespace Investify.MVVM.ViewModel
 
         private async Task SignUp()
         {
+            try
+            {
+                Validation();
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+
             var salt = User.GetSalt(16);
             var hashedPassword = User.SHA512Hashing(Password, salt);
             User user = new User()
@@ -142,6 +162,85 @@ namespace Investify.MVVM.ViewModel
             Debug.WriteLine(user);
 
             await Database.AddUser(user);
+        }
+
+        public bool Validation()
+        {
+            if (AreComponentsNull())
+            {
+                throw new ArgumentException("One of components' content is null");
+            }
+
+            if (AreComponentsEmpty())
+            {
+                //MessageBox.Show("One of components is empty or contains only a whitespace.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+            if (!IsDateConvertibleToIntegerAndBiggerThanZero())
+            {
+                return false;
+            }
+
+            if (!IsBirthDateEarlierThanTodaysDay())
+            {
+                //MessageBox.Show("Birthdate is later than today's day.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
+
+            if (!IsBirthDateInTolerance())
+            {
+                return false;
+            };
+
+            if (!IsEmailFormatValid())
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool AreComponentsNull()
+        {
+            return Firstname == null || Lastname == null
+                || Login == null || Email == null
+                || Password == null || DayOfBirth == null 
+                || YearOfBirth == null;
+        }
+
+        private bool AreComponentsEmpty()
+        {
+            return String.IsNullOrWhiteSpace(Firstname) || String.IsNullOrWhiteSpace(Lastname)
+                || String.IsNullOrWhiteSpace(Login) || String.IsNullOrWhiteSpace(Email)
+                || String.IsNullOrWhiteSpace(Password) || String.IsNullOrWhiteSpace(DayOfBirth) 
+                || String.IsNullOrWhiteSpace(YearOfBirth);
+        }
+
+        private bool IsBirthDateInTolerance()
+        {
+            var lowerBound = DateTime.Today.AddYears(-120);
+            var date = new DateTime(Convert.ToInt16(YearOfBirth), MonthOfBirth, Convert.ToInt16(DayOfBirth));
+            return lowerBound < date;
+        }
+
+        private bool IsDateConvertibleToIntegerAndBiggerThanZero()
+        {
+            return int.TryParse(DayOfBirth, out _) && int.TryParse(YearOfBirth, out _) 
+                && Convert.ToInt16(DayOfBirth) > 0 && Convert.ToInt16(YearOfBirth) > 0;
+        }
+
+        private bool IsBirthDateEarlierThanTodaysDay()
+        {
+            var today = DateTime.Today;
+            var date = new DateTime(Convert.ToInt16(YearOfBirth), MonthOfBirth, Convert.ToInt16(DayOfBirth));
+            return date <= today;
+        }
+
+        private bool IsEmailFormatValid()
+        {
+            Regex regex = new Regex(@"([a-zA-Z]+[\w+.]*[a-zA-Z]*)@([a-zA-Z]+[\w.]*[a-zA-Z]*)");
+            return regex.IsMatch(Email);
         }
     }
 }
