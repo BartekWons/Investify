@@ -130,7 +130,11 @@ namespace Investify.MVVM.ViewModel
         {
             try
             {
-                Validation();
+                if (!Validation())
+                {
+                    MessageBox.Show("Invalid input data.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
             }
             catch (ArgumentException ex)
             {
@@ -150,7 +154,7 @@ namespace Investify.MVVM.ViewModel
                 Firstname = this.Firstname,
                 Lastname = this.Lastname,
                 Login = this.Login,
-                Email = this.Email,
+                Email = this.Email.ToLower(),
                 Password = hashedPassword,
                 Salt = salt,
                 BirthDate = new DateTime(
@@ -182,6 +186,7 @@ namespace Investify.MVVM.ViewModel
                 return false;
             }
 
+            
             if (!IsBirthDateEarlierThanTodaysDay())
             {
                 //MessageBox.Show("Birthdate is later than today's day.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -220,7 +225,7 @@ namespace Investify.MVVM.ViewModel
         private bool IsBirthDateInTolerance()
         {
             var lowerBound = DateTime.Today.AddYears(-120);
-            var date = new DateTime(Convert.ToInt16(YearOfBirth), MonthOfBirth, Convert.ToInt16(DayOfBirth));
+            var date = new DateTime(Convert.ToInt16(YearOfBirth), MonthOfBirth + 1, Convert.ToInt16(DayOfBirth));
             return lowerBound < date;
         }
 
@@ -233,7 +238,7 @@ namespace Investify.MVVM.ViewModel
         private bool IsBirthDateEarlierThanTodaysDay()
         {
             var today = DateTime.Today;
-            var date = new DateTime(Convert.ToInt16(YearOfBirth), MonthOfBirth, Convert.ToInt16(DayOfBirth));
+            var date = new DateTime(Convert.ToInt16(YearOfBirth), MonthOfBirth + 1, Convert.ToInt16(DayOfBirth));
             return date <= today;
         }
 

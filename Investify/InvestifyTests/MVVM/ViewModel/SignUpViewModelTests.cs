@@ -392,7 +392,7 @@ namespace Investify.MVVM.ViewModel.Tests
         }
 
         [Test()]
-        public void ValidationTest_BirthDateIsEarlierThanTodaysDate_ReturnsFalse()
+        public void ValidationTest_BirthDateIsEarlierThanTodaysDate_ReturnsTrue()
         {
             SignUpViewModel viewModel = new SignUpViewModel()
             {

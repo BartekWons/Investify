@@ -70,15 +70,22 @@ namespace Investify.MVVM.ViewModel.Menu
 
         private async Task ChangeServer()
         {
-            await Database.ChangeServerData(ServerName, UserName, Password, DatabaseName);
-            ServerName = CurrentServer;
-            UserName = CurrentUser;
-            DatabaseName = CurrentDatabase;
+            Config config = new Config();
+            config.Server = new Server()
+            {
+                ServerName = this.ServerName,
+                UserName = this.UserName,
+                Password = this.Password,
+                DatabaseName = this.DatabaseName
+            };
+
+            await config.SaveServerData();
         }
 
         private void GetCurrentServerData()
         {
-            var connectionString = Database.ReadServerData();
+            Config config = new Config();
+            var connectionString = config.ReadServerData();
 
             if (connectionString == null)
             {
