@@ -80,6 +80,8 @@ namespace Investify.MVVM.ViewModel.Menu
             };
 
             await config.SaveServerData();
+
+            MessageBox.Show("Server has changed.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void GetCurrentServerData()

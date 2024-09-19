@@ -32,7 +32,6 @@ namespace Investify.MVVM.Model
         {
             Config config = new Config();
 
-            //var connectionString = await ReadServerData();
             var connectionString = await config.ReadServerData();
             using (var connection = new MySqlConnection(connectionString))
             {
@@ -45,7 +44,6 @@ namespace Investify.MVVM.Model
         public static async Task<IEnumerable<User>> GetUsers()
         {
             Config config = new Config();
-            //var connectionString = await ReadServerData();
             var connectionString = await config.ReadServerData();
             using (var connection = new MySqlConnection(connectionString))
             {

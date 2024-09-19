@@ -66,7 +66,6 @@ namespace Investify.MVVM.Model
                 Async = true
             };
 
-            // Open the FileStream with asynchronous support
             using (var fileStream = new FileStream(
                 _path,
                 FileMode.Open,

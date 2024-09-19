@@ -49,63 +49,64 @@
                        Height="100"
                        RenderOptions.BitmapScalingMode="HighQuality"/>
 
-                <TextBox Width="250"
+                <TextBox Width="280"
                          FontSize="17"
                          Tag="Firstname"
                          Text="{Binding Firstname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
-                <TextBox Width="250"
+                <TextBox Width="280"
                          FontSize="17"
                          Tag="Lastname"
                          Text="{Binding Lastname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
-                <TextBox Width="250"
+                <TextBox Width="280"
                          FontSize="17"
                          Tag="Login"
                          Text="{Binding Login, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
-                <TextBox Width="250"
+                <TextBox Width="280"
                          FontSize="17"
                          Tag="Email"
                          Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
                 
-                <TextBox Width="250"
+                <TextBox Width="280"
                          FontSize="17"
                          Tag="Password"
                          Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Style="{StaticResource TextBoxTheme}"
                          Margin="10"/>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                            Width="280">
                     
-                    <TextBox Width="57"
+                    <TextBox Width="60"
                              FontSize="17"
                              Tag="Day"
                              Text="{Binding DayOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              Style="{StaticResource TextBoxTheme}"
-                             Margin="10"/>
+                             Margin="0,10,10,10"/>
 
-                    <ComboBox Height="46"
-                              Width="130"
+                    <ComboBox Height="43"
+                              Width="140"
                               FontSize="17"
                               ItemsSource="{Binding Months}"
                               SelectedIndex="{Binding MonthOfBirth}"
                               Style="{StaticResource ComboBoxTheme}"/>
 
-                    <TextBox Width="57"
+                    <TextBox Width="60"
                              FontSize="17"
                              Tag="Year"
                              Text="{Binding YearOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              Style="{StaticResource TextBoxTheme}"
-                             Margin="10"/>
+                             Margin="10,10,0,10"/>
                     
                 </StackPanel>
 
