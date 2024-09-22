@@ -5,8 +5,42 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Investify.MVVM.View.Menu"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="695" d:DesignWidth="1080">
     <Grid Background="Transparent">
-        <TextBlock Text="HomeView"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="121*"/>
+            <ColumnDefinition Width="679*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="HomeView" Grid.ColumnSpan="2"/>
+
+        <Grid Grid.ColumnSpan="2">
+            <Grid.RenderTransform>
+                <RotateTransform Angle="-34"/>
+            </Grid.RenderTransform>
+
+            <StackPanel Orientation="Horizontal" Margin="-50,930,50,-930">
+
+                <StackPanel>
+                    <Border Width="1000"
+                            Height="35"
+                            Background="#ff0000"
+                            CornerRadius="10"
+                            Margin="0,0,0,30"/>
+
+                    <Border Width="1000"
+                            Height="35"
+                            Background="#0200ff"
+                            CornerRadius="10"
+                            Margin="0,0,0,30"/>
+
+                    <Border Width="1000"
+                            Height="35"
+                            Background="#1cff00"
+                            CornerRadius="10"/>
+                </StackPanel>
+
+                <StackPanel/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>

@@ -95,7 +95,7 @@
 
                         <RadioButton Content="Search"
                                      Style="{StaticResource MenuButtonTheme}"
-                                     Command="{Binding SwitchToSearchViewCommand}"/>
+                                     Command="{Binding SwitchToSearchViewCommand}" Checked="RadioButton_Checked"/>
 
                         <RadioButton Content="Favourite"
                                      Style="{StaticResource MenuButtonTheme}"
