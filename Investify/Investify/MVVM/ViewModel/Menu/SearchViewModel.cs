@@ -1,10 +1,9 @@
 ﻿using Investify.Core;
+using Investify.MVVM.Model.API;
 using Investify.MVVM.Model.Search;
 using Investify.MVVM.ViewModel.Menu.Search;
-using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Net.Http;
 
 namespace Investify.MVVM.ViewModel.Menu
 {
@@ -36,7 +35,6 @@ namespace Investify.MVVM.ViewModel.Menu
             }
         }
 
-
         public SearchViewModel()
         {
             SearchedElements = new ObservableCollection<SearchedElementViewModel>();
@@ -48,33 +46,17 @@ namespace Investify.MVVM.ViewModel.Menu
         {
             SearchedElements.Clear();
             SearchResponse parsedData;
-
             try
             {
-                string queryURL = $"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={SearchString}&apikey=demo";
-
-                using (HttpClient client = new HttpClient())
-                {
-                    HttpResponseMessage response = await client.GetAsync(queryURL);
-                    response.EnsureSuccessStatusCode();
-
-                    string jsonsData = await response.Content.ReadAsStringAsync();
-
-                    parsedData = JsonConvert.DeserializeObject<SearchResponse>(jsonsData);
-                    Debug.WriteLine(parsedData);
-
-                }
-                if (parsedData == null || parsedData.BestMatches == null)
-                {
+                parsedData = await APIManager.Search<SearchResponse>(SearchString, "demo");
+                if (parsedData == null || parsedData.BestMatches == null) 
                     return;
-                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.Message);
                 return;
             }
-
             ShowSearchedElements(parsedData);
         }
         private void ShowSearchedElements(SearchResponse parsedData)

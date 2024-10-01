@@ -1,11 +1,9 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model;
-using System.CodeDom;
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
+using Investify.Services;
 using System.Windows;
 
-namespace Investify.MVVM.ViewModel
+namespace Investify.MVVM.ViewModel.Account
 {
     public class LogInViewModel : ObservableObject
     {
@@ -65,12 +63,34 @@ namespace Investify.MVVM.ViewModel
                 return;
             }
 
-            var data = await Database.GetUsers();
+            var users = await Database.GetUsers();
 
-            foreach (var user in data)
+            if (!CheckIfUserExists(users))
             {
-                Debug.WriteLine(user);
+                MessageBox.Show("This account does not exist.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+
+            var user = users.FirstOrDefault(u => u.Login == this.Login);
+
+            if (!IsPasswordCorrect(user, User.SHA512Hashing(Password, user.Salt)))
+            {
+                MessageBox.Show("Wrong password.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            Singleton.Instance.LoggedUser = user;
+            CloseAction?.Invoke();
+        }
+
+        private bool CheckIfUserExists(IEnumerable<User> users)
+        {
+            return users.Any(u => u.Login == this.Login);
+        }
+        
+        private bool IsPasswordCorrect(User user, string password)
+        {
+            return user != null && password.Equals(user.Password);
         }
 
         public bool Validation()

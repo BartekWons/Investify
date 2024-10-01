@@ -1,7 +1,5 @@
-﻿using Org.BouncyCastle.Tls;
-using System.IO;
+﻿using System.IO;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace Investify.MVVM.Model
 {
@@ -10,6 +8,7 @@ namespace Investify.MVVM.Model
         private string _path;
 
         public Server Server { get; set; }
+        public string ApiKey { get; set; }
 
         public Config()
         {
@@ -24,7 +23,7 @@ namespace Investify.MVVM.Model
             return targetPath;
         }
 
-        public async Task SaveServerData()
+        public async Task SaveServerDataAsync()
         {
             XmlWriterSettings settings = new XmlWriterSettings()
             {
@@ -57,7 +56,7 @@ namespace Investify.MVVM.Model
             }
         }
 
-        public async Task<string> ReadServerData()
+        public async Task<string> ReadServerDataAsync()
         {
             Server server = new Server();
 
@@ -98,6 +97,39 @@ namespace Investify.MVVM.Model
                 }
             }
             return $"server={server.ServerName};user={server.UserName};pwd={server.Password};database={server.DatabaseName}";
+        }
+
+        public async Task SaveApiKeyAsync()
+        {
+            XmlDocument doc = new XmlDocument();
+            await Task.Run(() => doc.Load(_path));
+
+
+            if (doc.DocumentElement.Name != null && doc.DocumentElement.Name != "ApiConfiguration")
+            {
+                XmlElement newDoc = doc.CreateElement("ApiConfiguration");
+
+                XmlNode oldDoc = doc.DocumentElement;
+                doc.RemoveChild(oldDoc);
+                newDoc.AppendChild(oldDoc);
+                doc.AppendChild(newDoc);
+            }
+            XmlElement apiConfig = doc.CreateElement("ApiConfig");
+            XmlElement apiKey = doc.CreateElement("ApiKey");
+            apiConfig.AppendChild(apiKey);
+
+            doc.DocumentElement.AppendChild(apiConfig);
+            await Task.Run(() => doc.Save(_path));
+        }
+
+        public async Task<string> ReadApiKeyAsync()
+        {
+            XmlDocument doc = new XmlDocument();
+            await Task.Run(() => doc.Load(_path));
+
+            XmlNode apiKeyNode = doc.SelectSingleNode("//ApiConfiguration/ApiConfig/ApiKey");
+
+            return (apiKeyNode != null) ? apiKeyNode.InnerText : null;
         }
     }
 }

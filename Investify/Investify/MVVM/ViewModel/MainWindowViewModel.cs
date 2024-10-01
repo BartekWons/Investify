@@ -108,7 +108,6 @@ namespace Investify.MVVM.ViewModel
 
             SwitchToSettingsViewCommand = new RelayCommand(o =>
             {
-                Debug.WriteLine("Settings");
                 CurrentView = SettingsViewModel;
             });
         }

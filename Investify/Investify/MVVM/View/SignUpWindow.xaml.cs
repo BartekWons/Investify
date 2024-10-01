@@ -1,4 +1,4 @@
-﻿using Investify.MVVM.ViewModel;
+﻿using Investify.MVVM.ViewModel.Account;
 using System.Windows;
 
 namespace Investify.MVVM.View

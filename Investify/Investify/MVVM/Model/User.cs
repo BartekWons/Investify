@@ -1,5 +1,4 @@
 ﻿using System.Security.Cryptography;
-using System.Security.RightsManagement;
 using System.Text;
 
 namespace Investify.MVVM.Model

@@ -1,13 +1,10 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model;
-using Microsoft.VisualBasic;
 using System.Diagnostics;
-using System.Reflection.Metadata.Ecma335;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Windows;
 
-namespace Investify.MVVM.ViewModel
+namespace Investify.MVVM.ViewModel.Account
 {
     public class SignUpViewModel : ObservableObject
     {

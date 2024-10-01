@@ -9,6 +9,9 @@ namespace Investify.MVVM.ViewModel.Menu
     public class SettingsViewModel : ObservableObject
     {
         public RelayCommand ChangeServerCommand { get; set; }
+        public RelayCommand ChangeApiKeyCommand {  get; set; }
+
+        public RelayCommand GetApiKeyCommand { get; set; }
 
         private string _serverName;
 
@@ -62,10 +65,58 @@ namespace Investify.MVVM.ViewModel.Menu
         public string CurrentUser { get; set; }
         public string CurrentDatabase {  get; set; }
 
+
+        private string _apiKey;
+
+        public string ApiKey
+        {
+            get { return _apiKey; }
+            set 
+            { 
+                _apiKey = value; 
+                OnPropertyChanged();
+            }
+        }
+
+
         public SettingsViewModel()
         {
-            //GetCurrentServerData();
             ChangeServerCommand = new RelayCommand(async o => await ChangeServer());
+
+            ChangeApiKeyCommand = new RelayCommand(async o =>
+            {
+                Config config = new Config()
+                {
+                    ApiKey = this.ApiKey
+                };
+                //await config.SaveApiKeyAsync();
+            });
+
+            GetApiKeyCommand = new RelayCommand(o => OpenUrl(o));
+        }
+
+        private void OpenUrl(object o)
+        {
+            string? url = o as string;
+            if (!String.IsNullOrEmpty(url))
+            {
+                OpenUrlInBrowser(url);
+            }
+        }
+
+        private void OpenUrlInBrowser(string url)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(url)
+                {
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private async Task ChangeServer()
@@ -79,7 +130,7 @@ namespace Investify.MVVM.ViewModel.Menu
                 DatabaseName = this.DatabaseName
             };
 
-            await config.SaveServerData();
+            await config.SaveServerDataAsync();
 
             MessageBox.Show("Server has changed.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
@@ -87,7 +138,7 @@ namespace Investify.MVVM.ViewModel.Menu
         private void GetCurrentServerData()
         {
             Config config = new Config();
-            var connectionString = config.ReadServerData();
+            var connectionString = config.ReadServerDataAsync();
 
             if (connectionString == null)
             {

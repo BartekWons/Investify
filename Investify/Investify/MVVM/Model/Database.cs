@@ -32,7 +32,7 @@ namespace Investify.MVVM.Model
         {
             Config config = new Config();
 
-            var connectionString = await config.ReadServerData();
+            var connectionString = await config.ReadServerDataAsync();
             using (var connection = new MySqlConnection(connectionString))
             {
                 var sql = "INSERT INTO Users(firstname, lastname, login, email, password, salt, birthdate) " +
@@ -44,7 +44,7 @@ namespace Investify.MVVM.Model
         public static async Task<IEnumerable<User>> GetUsers()
         {
             Config config = new Config();
-            var connectionString = await config.ReadServerData();
+            var connectionString = await config.ReadServerDataAsync();
             using (var connection = new MySqlConnection(connectionString))
             {
                 return await connection.QueryAsync<User>("SELECT * FROM users");
