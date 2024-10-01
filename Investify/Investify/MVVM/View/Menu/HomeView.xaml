@@ -11,7 +11,10 @@
             <ColumnDefinition Width="121*"/>
             <ColumnDefinition Width="679*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="HomeView" Grid.ColumnSpan="2"/>
+        
+        <TextBlock Text="{Binding HelloMessage}" 
+                   Grid.ColumnSpan="2"
+                   FontFamily="\Assets\Fonts\Gowun_Batang\#GowunBatang"/>
 
         <Grid Grid.ColumnSpan="2">
             <Grid.RenderTransform>

@@ -18,7 +18,8 @@
         </Style>
 
         <Style TargetType="{x:Type Button}">
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="0,5,5,5"/>
             <Setter Property="Background" Value="#d9d9d9"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -50,7 +51,8 @@
     <Button VerticalAlignment="Stretch"
             HorizontalAlignment="Stretch"
             VerticalContentAlignment="Stretch"
-            HorizontalContentAlignment="Stretch">
+            HorizontalContentAlignment="Stretch"
+            Command="{Binding OpenStockSiteCommand}">
         <Grid VerticalAlignment="Stretch"
                   HorizontalAlignment="Stretch"
                   Margin="5">

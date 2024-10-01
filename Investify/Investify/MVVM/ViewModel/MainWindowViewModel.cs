@@ -1,7 +1,7 @@
 ﻿using Investify.Core;
 using Investify.MVVM.View;
 using Investify.MVVM.ViewModel.Menu;
-using System.Diagnostics;
+using Investify.Services;
 using System.Windows;
 using System.Windows.Media.Effects;
 
@@ -26,14 +26,12 @@ namespace Investify.MVVM.ViewModel
         public RelayCommand SignUpCommand { get; set; }
         
 
-        private object _currentView;
-
         public object CurrentView
         {
-            get { return _currentView; }
+            get { return Singleton.Instance.CurrentView; }
             set 
-            { 
-                _currentView = value; 
+            {  
+                Singleton.Instance.CurrentView = value;
                 OnPropertyChanged();
             }
         }
@@ -41,6 +39,12 @@ namespace Investify.MVVM.ViewModel
 
         public MainWindowViewModel()
         {
+            Singleton.Instance.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(Singleton.CurrentView))
+                    OnPropertyChanged(nameof(CurrentView));
+            };
+
             HomeViewModel = new HomeViewModel();
             SearchViewModel = new SearchViewModel();
             FavouriteViewModel = new FavouriteViewModel();
@@ -66,8 +70,10 @@ namespace Investify.MVVM.ViewModel
             LogInCommand = new RelayCommand(o =>
             {
                 var mainWindow = Application.Current.MainWindow;
-                var blurEffect = new BlurEffect();
-                blurEffect.Radius = 5;
+                var blurEffect = new BlurEffect
+                {
+                    Radius = 5
+                };
                 mainWindow.Effect = blurEffect;
 
                 LogInView window = new LogInView();
@@ -80,8 +86,10 @@ namespace Investify.MVVM.ViewModel
             SignUpCommand = new RelayCommand(o =>
             {
                 var mainWindow = Application.Current.MainWindow;
-                var blurEffect = new BlurEffect();
-                blurEffect.Radius = 5;
+                var blurEffect = new BlurEffect
+                {
+                    Radius = 5
+                };
                 mainWindow.Effect = blurEffect;
 
                 SignUpWindow window = new SignUpWindow();

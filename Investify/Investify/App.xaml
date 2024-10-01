@@ -6,6 +6,8 @@
              xmlns:viewModelMenuSearch="clr-namespace:Investify.MVVM.ViewModel.Menu.Search"
              xmlns:viewMenu="clr-namespace:Investify.MVVM.View.Menu"
              xmlns:viewMenuSearch="clr-namespace:Investify.MVVM.View.Menu.Search"
+             xmlns:viewModelStock="clr-namespace:Investify.MVVM.ViewModel.Stock"
+             xmlns:viewStock="clr-namespace:Investify.MVVM.View.Stock"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -39,6 +41,10 @@
 
             <DataTemplate DataType="{x:Type viewModelMenuSearch:SearchedElementViewModel}">
                 <viewMenuSearch:SearchedElementView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModelStock:StockViewModel}">
+                <viewStock:StockView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

@@ -1,5 +1,6 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model;
+using System.Windows.Controls;
 
 namespace Investify.Services
 {
@@ -31,5 +32,18 @@ namespace Investify.Services
 				OnPropertyChanged(nameof(LoggedUser));
 			}
 		}
+
+		private object _currentView;
+
+		public object CurrentView
+		{
+			get { return _currentView; }
+			set 
+			{ 
+				_currentView = value;
+				OnPropertyChanged();
+			}
+		}
+
 	}
 }

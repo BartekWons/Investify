@@ -83,14 +83,14 @@ namespace Investify.MVVM.ViewModel.Menu
         {
             ChangeServerCommand = new RelayCommand(async o => await ChangeServer());
 
-            ChangeApiKeyCommand = new RelayCommand(async o =>
-            {
-                Config config = new Config()
-                {
-                    ApiKey = this.ApiKey
-                };
-                //await config.SaveApiKeyAsync();
-            });
+            //ChangeApiKeyCommand = new RelayCommand(async o =>
+            //{
+            //    Config config = new Config()
+            //    {
+            //        ApiKey = this.ApiKey
+            //    };
+            //    //await config.SaveApiKeyAsync();
+            //});
 
             GetApiKeyCommand = new RelayCommand(o => OpenUrl(o));
         }

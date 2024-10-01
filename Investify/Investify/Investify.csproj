@@ -9,6 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Fonts\Gowun_Batang\GowunBatang-Bold.ttf" />
+    <None Remove="Assets\Fonts\Gowun_Batang\GowunBatang-Regular.ttf" />
     <None Remove="Assets\Fonts\Roboto\Roboto-Black.ttf" />
     <None Remove="Assets\Fonts\Roboto\Roboto-BlackItalic.ttf" />
     <None Remove="Assets\Fonts\Roboto\Roboto-Bold.ttf" />
@@ -40,6 +42,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Fonts\Gowun_Batang\GowunBatang-Bold.ttf" />
+    <Resource Include="Assets\Fonts\Gowun_Batang\GowunBatang-Regular.ttf" />
     <Resource Include="Assets\Images\Icons\favourite_icon.png" />
     <Resource Include="Assets\Images\Icons\LogInButtonIcon\login_icon.png" />
     <Resource Include="Assets\Images\Icons\LogInButtonIcon\sign_up_icon.png" />

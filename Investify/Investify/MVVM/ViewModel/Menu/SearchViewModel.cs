@@ -37,7 +37,7 @@ namespace Investify.MVVM.ViewModel.Menu
 
         public SearchViewModel()
         {
-            SearchedElements = new ObservableCollection<SearchedElementViewModel>();
+            SearchedElements = [];
 
             EnterCommand = new RelayCommand(async o => await GetStocks());
         }
@@ -48,7 +48,7 @@ namespace Investify.MVVM.ViewModel.Menu
             SearchResponse parsedData;
             try
             {
-                parsedData = await APIManager.Search<SearchResponse>(SearchString, "demo");
+                parsedData = await APIManager.SearchAsync<SearchResponse>(SearchString, "demo");
                 if (parsedData == null || parsedData.BestMatches == null) 
                     return;
             }
@@ -59,6 +59,7 @@ namespace Investify.MVVM.ViewModel.Menu
             }
             ShowSearchedElements(parsedData);
         }
+
         private void ShowSearchedElements(SearchResponse parsedData)
         {
             for (int i = 0; i < parsedData.BestMatches.Count; i++)

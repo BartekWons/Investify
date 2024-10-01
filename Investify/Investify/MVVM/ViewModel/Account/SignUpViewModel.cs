@@ -1,5 +1,6 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model;
+using Investify.Services;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -146,7 +147,7 @@ namespace Investify.MVVM.ViewModel.Account
 
             var salt = User.GetSalt(16);
             var hashedPassword = User.SHA512Hashing(Password, salt);
-            User user = new User()
+            User user = new()
             {
                 Firstname = this.Firstname,
                 Lastname = this.Lastname,
@@ -162,7 +163,21 @@ namespace Investify.MVVM.ViewModel.Account
 
             Debug.WriteLine(user);
 
+            var users = await Database.GetUsers();
+
+            if (users.Any(u => u.Login.Equals(user.Login)))
+            {
+                MessageBox.Show("This login already exists!\nChange login to continue.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             await Database.AddUser(user);
+
+            Singleton.Instance.LoggedUser = user;
+
+            MessageBox.Show("User created!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            CloseAction.Invoke();
         }
 
         public bool Validation()
