@@ -1,50 +1,52 @@
 ﻿using Investify.MVVM.Model.Stock.OpenAndClosePrices;
-using System.Windows.Markup;
 
 namespace Investify.MVVM.ViewModel.Stock
 {
     public class StockViewModel
     {
-		private string _openPrice;
+        public string Symbol { get; set; }
+		public string Name { get; set; }
+		public string Region { get; set; }
+		public string Currency { get; set; }
 
-		public string OpenPrice
+        public double OpenPrice { get; set; }
+		public double ClosePrice { get; set; }
+		public double LowestPrice { get; set; }
+		public double HighestPrice { get; set; }
+		public int Volume { get; set; }
+
+		private DailyTimeSeriesData _data;
+
+		public DailyTimeSeriesData Data
 		{
-			get { return _openPrice; }
-			set { _openPrice = value; }
+			get { return _data; }
+			set 
+			{ 
+				_data = value;
+				if (_data != null && Data.PriceList != null)
+				{
+					InitializeData();
+				}
+			}
 		}
 
-		private string _closePrice;
+		public StockViewModel()
+        {
+			OpenPrice = 125.6;
+			ClosePrice = 456.58;
+			HighestPrice = 785.48;
+			LowestPrice = 50.11;
+			Volume = 123456;
+        }
 
-		public string ClosePrice
+		private void InitializeData()
 		{
-			get { return _closePrice; }
-			set { _closePrice = value; }
-		}
-
-		private string _lowestPrice;
-
-		public string LowestPrice
-		{
-			get { return _lowestPrice; }
-			set { _lowestPrice = value; }
-		}
-
-		private string _highestPrice;
-
-		public string HighestPrice
-		{
-			get { return _highestPrice; }
-			set { _highestPrice = value; }
-		}
-
-		private string _volume;
-
-		public string Volume
-		{
-			get { return _volume; }
-			set { _volume = $"Volume: {value}"; }
-		}
-
-        public DailyTimeSeriesData Data { get; set; }
+            var stock = Data.PriceList.FirstOrDefault();
+            OpenPrice = stock.Value.OpenPrice.HasValue ? (double) stock.Value.OpenPrice : 0;
+            ClosePrice = stock.Value.ClosePrice.HasValue ? (double) stock.Value.ClosePrice : 0;
+            HighestPrice = stock.Value.HighestPrice.HasValue ? (double)stock.Value.HighestPrice : 0;
+            LowestPrice = stock.Value.LowestPrice.HasValue ? (double)stock.Value.LowestPrice : 0;
+            Volume = stock.Value.Volume.HasValue ? (int) stock.Value.Volume : 0;
+        }
     }
 }

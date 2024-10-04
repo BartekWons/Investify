@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ServerConnection>
-  <ServerName />
-  <UserName />
-  <Password />
-  <DatabaseName />
+  <ServerName>localhost</ServerName>
+  <UserName>root</UserName>
+  <Password>NiebieskaKlawiatura</Password>
+  <DatabaseName>investifydb</DatabaseName>
 </ServerConnection>

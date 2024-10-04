@@ -15,7 +15,7 @@ namespace Investify.MVVM.Model.API
 
         public static async Task<T> GetBasicStockData<T>(string companySymbol, string apiKey)
         {
-            string queryURL = $"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={companySymbol}&outputsize=full&apikey={apiKey}";
+            string queryURL = $"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={companySymbol}&outputsize=compact&apikey={apiKey}";
             return await GetDataAsync<T>(queryURL);
         }
 

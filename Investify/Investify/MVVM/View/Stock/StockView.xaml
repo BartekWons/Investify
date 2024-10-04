@@ -4,14 +4,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Investify.MVVM.View.Stock"
+             xmlns:chart="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Run}">
+            <Setter Property="Foreground" Value="#5f6368"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontFamily" Value="\Assets\Fonts\Roboto\#Roboto"/>
+        </Style>
+    </UserControl.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
 
+        <chart:CartesianChart Series="{Binding SeriesCollection}"
+                              LegendLocation="Left" Loaded="CartesianChart_Loaded">
+            <chart:CartesianChart.AxisX>
+                <chart:Axis Title="Time"
+                            Labels="{Binding TimeLabels}"/>
+            </chart:CartesianChart.AxisX>
+
+            <chart:CartesianChart.AxisY>
+                <chart:Axis Title="Price"
+                            Labels="{Binding PriceLabels}"/>
+            </chart:CartesianChart.AxisY>
+        </chart:CartesianChart>
+        
         <StackPanel Grid.Row="1"
                     Orientation="Vertical">
             <StackPanel.Resources>
@@ -21,15 +44,45 @@
             </StackPanel.Resources>
 
             <StackPanel Orientation="Horizontal">
-
+                <TextBlock>
+                    <Run Text="Symbol: "/>
+                    <Run Text="{Binding Symbol}"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Name: "/>
+                    <Run Text="{Binding Name}"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Region: "/>
+                    <Run Text="{Binding Region}"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Currency: "/>
+                    <Run Text="{Binding Currency}"/>
+                </TextBlock>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal">
-                <TextBlock Text="{Binding OpenPrice}"/>
-                <TextBlock Text="{Binding ClosePrice}"/>
-                <TextBlock Text="{Binding HighestPrice}"/>
-                <TextBlock Text="{Binding LowestPrice}"/>
-                <TextBlock Text="{Binding Volume}"/>
+                <TextBlock>
+                    <Run Text="Opening price: "/>
+                    <Run Text="{Binding OpenPrice}"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Closing price: "/>
+                    <Run Text="{Binding ClosePrice}"/>
+                </TextBlock>
+                <TextBlock >
+                    <Run Text="Highest price: "/>
+                    <Run Text="{Binding HighestPrice}"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Lowest price: "/>
+                    <Run Text="{Binding LowestPrice}"/>
+                </TextBlock>
+                <TextBlock>
+                    <Run Text="Volume: "/>
+                    <Run  Text="{Binding Volume}"/>
+                </TextBlock>
             </StackPanel>
         </StackPanel>
     </Grid>

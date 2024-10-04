@@ -29,7 +29,7 @@ namespace Investify.Services
 			set 
 			{ 
 				_loggedUser = value; 
-				OnPropertyChanged(nameof(LoggedUser));
+				OnPropertyChanged();
 			}
 		}
 

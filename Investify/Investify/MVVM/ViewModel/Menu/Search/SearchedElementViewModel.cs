@@ -14,6 +14,7 @@ namespace Investify.MVVM.ViewModel.Menu.Search
         public string Name { get; set; }
         public string Region { get; set; }
         public string Currency { get; set; }
+
         public RelayCommand OpenStockSiteCommand { get; set; }
 
         public SearchedElementViewModel()
@@ -24,14 +25,16 @@ namespace Investify.MVVM.ViewModel.Menu.Search
 
         private async Task OpenStockSite()
         {
-            Debug.WriteLine("start");
             DailyTimeSeriesData parsedData = await GetCompanyData();
-
+            
             Singleton.Instance.CurrentView = new StockViewModel()
             {
-                Data = parsedData
+                //Data = parsedData
+                Symbol = this.Symbol,
+                Name = this.Name,
+                Region = this.Region,
+                Currency = this.Currency,
             };
-            Debug.WriteLine("end");
         }
 
         private async Task<DailyTimeSeriesData> GetCompanyData()

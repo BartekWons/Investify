@@ -6,15 +6,20 @@
              xmlns:local="clr-namespace:Investify.MVVM.View.Menu"
              mc:Ignorable="d" 
              d:DesignHeight="695" d:DesignWidth="1080">
+    
     <Grid Background="Transparent">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="121*"/>
             <ColumnDefinition Width="679*"/>
         </Grid.ColumnDefinitions>
-        
-        <TextBlock Text="{Binding HelloMessage}" 
-                   Grid.ColumnSpan="2"
-                   FontFamily="\Assets\Fonts\Gowun_Batang\#GowunBatang"/>
+
+        <TextBlock Grid.ColumnSpan="2"
+                   FontSize="100"
+                   FontFamily="Freestyle Script"
+                   Foreground="#5f6368">
+            <Run Text="Hi!"/>
+            <Run Text="{Binding HelloMessage}"/>
+        </TextBlock>
 
         <Grid Grid.ColumnSpan="2">
             <Grid.RenderTransform>

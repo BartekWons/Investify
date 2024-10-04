@@ -22,7 +22,7 @@ namespace Investify.MVVM.ViewModel.Menu
         public HomeViewModel()
         {
             Singleton.Instance.PropertyChanged += OnLoggedUserPropertyChanged;
-            HelloMessage = (Singleton.Instance.LoggedUser != null) ? $"Hi! {Singleton.Instance.LoggedUser.Firstname}" : "Hi!";
+            HelloMessage = (Singleton.Instance.LoggedUser != null) ? $"{Singleton.Instance.LoggedUser.Firstname}" : String.Empty;
         }
 
         private void  OnLoggedUserPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -30,7 +30,7 @@ namespace Investify.MVVM.ViewModel.Menu
             if (e.PropertyName == nameof(Singleton.LoggedUser))
             {
                 HelloMessage = (Singleton.Instance.LoggedUser != null)
-                    ? $"Hi! {Singleton.Instance.LoggedUser.Firstname}" : "Hi!";
+                    ? $"{Singleton.Instance.LoggedUser.Firstname}" : String.Empty;
             }
         }
     }

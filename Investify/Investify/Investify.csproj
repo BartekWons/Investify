@@ -23,6 +23,7 @@
     <None Remove="Assets\Fonts\Roboto\Roboto-Regular.ttf" />
     <None Remove="Assets\Fonts\Roboto\Roboto-Thin.ttf" />
     <None Remove="Assets\Fonts\Roboto\Roboto-ThinItalic.ttf" />
+    <None Remove="Assets\Fonts\Yeseva_One\YesevaOne-Regular.ttf" />
     <None Remove="Assets\Images\Icons\CloseIcons\close_icon.png" />
     <None Remove="Assets\Images\Icons\CloseIcons\close_icon_hover.png" />
     <None Remove="Assets\Images\Icons\favourite_icon.png" />
@@ -44,6 +45,7 @@
   <ItemGroup>
     <Resource Include="Assets\Fonts\Gowun_Batang\GowunBatang-Bold.ttf" />
     <Resource Include="Assets\Fonts\Gowun_Batang\GowunBatang-Regular.ttf" />
+    <Resource Include="Assets\Fonts\Yeseva_One\YesevaOne-Regular.ttf" />
     <Resource Include="Assets\Images\Icons\favourite_icon.png" />
     <Resource Include="Assets\Images\Icons\LogInButtonIcon\login_icon.png" />
     <Resource Include="Assets\Images\Icons\LogInButtonIcon\sign_up_icon.png" />
@@ -82,6 +84,7 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
     <PackageReference Include="MySql.Data" Version="9.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />

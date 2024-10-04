@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Assert = NUnit.Framework.Assert;
+using Investify.MVVM.ViewModel.Account;
 
 namespace Investify.MVVM.ViewModel.Tests
 {
