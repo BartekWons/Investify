@@ -1,7 +1,7 @@
 ﻿using Dapper;
+using Investify.MVVM.Model.Config;
 using MySql.Data.MySqlClient;
 using System.IO;
-using System.Xml;
 
 namespace Investify.MVVM.Model
 {
@@ -30,25 +30,18 @@ namespace Investify.MVVM.Model
 
         public static async Task AddUser(User user)
         {
-            Config config = new Config();
-
-            var connectionString = await config.ReadServerDataAsync();
-            using (var connection = new MySqlConnection(connectionString))
-            {
-                var sql = "INSERT INTO Users(firstname, lastname, login, email, password, salt, birthdate) " +
-                    "VALUES (@Firstname, @Lastname, @Login, @Email, @Password, @Salt, @BirthDate);";
-                var rowsAffected = await connection.ExecuteAsync(sql, user);
-            }
+            var connectionString = ConfigManager.GetConnectionString();
+            using var connection = new MySqlConnection(connectionString);
+            var sql = "INSERT INTO Users(firstname, lastname, login, email, password, salt, birthdate) " +
+                "VALUES (@Firstname, @Lastname, @Login, @Email, @Password, @Salt, @BirthDate);";
+            var rowsAffected = await connection.ExecuteAsync(sql, user);
         }
 
         public static async Task<IEnumerable<User>> GetUsers()
         {
-            Config config = new Config();
-            var connectionString = await config.ReadServerDataAsync();
-            using (var connection = new MySqlConnection(connectionString))
-            {
-                return await connection.QueryAsync<User>("SELECT * FROM users");
-            }
+            var connectionString = ConfigManager.GetConnectionString();
+            using var connection = new MySqlConnection(connectionString);
+            return await connection.QueryAsync<User>("SELECT * FROM users");
         }
     }
 }

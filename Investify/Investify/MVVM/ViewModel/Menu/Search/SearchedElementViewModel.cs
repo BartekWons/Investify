@@ -1,5 +1,6 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model.API;
+using Investify.MVVM.Model.Config;
 using Investify.MVVM.Model.Stock.OpenAndClosePrices;
 using Investify.MVVM.ViewModel.Stock;
 using Investify.Services;
@@ -40,10 +41,10 @@ namespace Investify.MVVM.ViewModel.Menu.Search
         private async Task<DailyTimeSeriesData> GetCompanyData()
         {
             DailyTimeSeriesData parsedData;
+            Config config = ConfigManager.ReadXML();
             try
             {
-                Debug.WriteLine("stock site command");
-                parsedData = await APIManager.GetBasicStockData<DailyTimeSeriesData>(Symbol, "demo");
+                parsedData = await APIManager.GetBasicStockData<DailyTimeSeriesData>(Symbol, config.ApiKeys.AlphaVantaageApiKey);
             }
             catch (Exception ex)
             {

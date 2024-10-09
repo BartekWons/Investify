@@ -1,7 +1,6 @@
 ﻿using Investify.Core;
-using Investify.MVVM.Model;
+using Investify.MVVM.Model.Config;
 using System.Diagnostics;
-using System.Text.RegularExpressions;
 using System.Windows;
 
 namespace Investify.MVVM.ViewModel.Menu
@@ -81,16 +80,9 @@ namespace Investify.MVVM.ViewModel.Menu
 
         public SettingsViewModel()
         {
-            ChangeServerCommand = new RelayCommand(async o => await ChangeServer());
+            ChangeServerCommand = new RelayCommand(o => ChangeServer());
 
-            //ChangeApiKeyCommand = new RelayCommand(async o =>
-            //{
-            //    Config config = new Config()
-            //    {
-            //        ApiKey = this.ApiKey
-            //    };
-            //    //await config.SaveApiKeyAsync();
-            //});
+            ChangeApiKeyCommand = new RelayCommand(o => ChangeApiKey());
 
             GetApiKeyCommand = new RelayCommand(o => OpenUrl(o));
         }
@@ -118,44 +110,33 @@ namespace Investify.MVVM.ViewModel.Menu
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        private async Task ChangeServer()
+        
+        private void ChangeServer()
         {
-            Config config = new Config();
-            config.Server = new Server()
+            Config previousConfig = ConfigManager.ReadXML();
+            var newConfig = new Config()
             {
-                ServerName = this.ServerName,
-                UserName = this.UserName,
-                Password = this.Password,
-                DatabaseName = this.DatabaseName
+                ServerConfig = new ServerConfig()
+                {
+                    ServerName = this.ServerName,
+                    UserName = this.UserName,
+                    Password = this.Password,
+                    DatabaseName = this.DatabaseName
+                },
+                ApiKeys = new ApiKeys()
+                {
+                    AlphaVantaageApiKey = previousConfig.ApiKeys.AlphaVantaageApiKey
+                }
             };
-
-            await config.SaveServerDataAsync();
-
+            ConfigManager.SaveXML(newConfig);
             MessageBox.Show("Server has changed.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void GetCurrentServerData()
+        private void ChangeApiKey()
         {
-            Config config = new Config();
-            var connectionString = config.ReadServerDataAsync();
-
-            if (connectionString == null)
-            {
-                return;
-            }
-
-            Regex pattern = new Regex(@"server=(\w*);users=(\w*);pwd=(\w*);database=(\w*)");
-
-            if (!pattern.IsMatch(connectionString.ToString()))
-            {
-                MessageBox.Show("In valid connection string in serverConfig", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-            var match = pattern.Match(connectionString.ToString());
-            CurrentServer = match.Groups[1].Value;
-            CurrentServer = match.Groups[2].Value;
-            CurrentDatabase = match.Groups[3].Value;
+            var config = ConfigManager.ReadXML();
+            config.ApiKeys.AlphaVantaageApiKey = this.ApiKey;
+            ConfigManager.SaveXML(config);
         }
     }
 }

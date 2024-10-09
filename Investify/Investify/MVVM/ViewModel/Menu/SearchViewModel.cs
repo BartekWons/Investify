@@ -1,5 +1,6 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model.API;
+using Investify.MVVM.Model.Config;
 using Investify.MVVM.Model.Search;
 using Investify.MVVM.ViewModel.Menu.Search;
 using System.Collections.ObjectModel;
@@ -48,7 +49,8 @@ namespace Investify.MVVM.ViewModel.Menu
             SearchResponse parsedData;
             try
             {
-                parsedData = await APIManager.SearchAsync<SearchResponse>(SearchString, "demo");
+                var config = ConfigManager.ReadXML();
+                parsedData = await APIManager.SearchAsync<SearchResponse>(SearchString, config.ApiKeys.AlphaVantaageApiKey);
                 if (parsedData == null || parsedData.BestMatches == null) 
                     return;
             }

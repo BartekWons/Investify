@@ -1,15 +1,14 @@
 ﻿using Newtonsoft.Json;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Investify.MVVM.Model.API
 {
     public static class APIManager
     {
-        public static async Task<T> SearchAsync<T>(string SearchString, string apiKey)
+        public static async Task<T> SearchAsync<T>(string searchString, string apiKey)
         {
-            string queryURL = $"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={SearchString}&apikey={apiKey}";
+            string queryURL = $"https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords={searchString}&apikey={apiKey}";
             return await GetDataAsync<T>(queryURL);
         }
 

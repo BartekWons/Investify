@@ -1,6 +1,6 @@
-﻿namespace Investify.MVVM.Model
+﻿namespace Investify.MVVM.Model.Config
 {
-    public class Server
+    public class ServerConfig
     {
         public string ServerName { get; set; }
         public string UserName { get; set; }
