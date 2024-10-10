@@ -1,4 +1,6 @@
-﻿namespace Investify.MVVM.Model.Config
+﻿using Investify.MVVM.Model.API;
+
+namespace Investify.MVVM.Model.Config
 {
     public class Config
     {

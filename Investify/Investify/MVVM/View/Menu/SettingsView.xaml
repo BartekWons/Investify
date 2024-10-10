@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Investify.MVVM.View.Menu"
              xmlns:viewModel="clr-namespace:Investify.MVVM.ViewModel.Menu"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.DataContext>
@@ -17,7 +17,26 @@
             <Expander Header="General">
                 <StackPanel Orientation="Vertical"
                         Margin="20">
+                    <TextBlock Text="Currency:"
+                               Foreground="DarkGray"/>
+                    
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,5,0,5">
+                        <ComboBox Width="300"
+                                  FontSize="12"
+                                  ItemsSource="{Binding CurrenciesList}"
+                                  SelectedValue="{Binding SelectedCurrency}"
+                                  Style="{StaticResource ComboBoxTheme}">
+                            <ComboBox.InputBindings>
+                                <KeyBinding Key="Enter" Command="{Binding ChangeCurrencyCommand}"/>
+                            </ComboBox.InputBindings>
+                        </ComboBox>
 
+                        <Button Content="Change"
+                                Command="{Binding ChangeCurrencyCommand}"
+                                Style="{StaticResource RedButtonTheme}"
+                                Margin="10,0,5,0"/>
+                    </StackPanel>
                 </StackPanel>
             </Expander>
 
@@ -57,12 +76,8 @@
                             Width="80"
                             Command="{Binding ChangeServerCommand}"
                             Style="{StaticResource RedButtonTheme}"/>
-
-
                     </StackPanel>
                 </StackPanel>
-
-
             </Expander>
 
             <Expander Header="API">
@@ -83,18 +98,44 @@
 
                         <TextBox Grid.Column="0"
                              Tag="AlphaVantage API Key" 
-                             Text="{Binding ApiKey}"
+                             Text="{Binding AlphaVantageApiKey}"
                              HorizontalAlignment="Stretch"
                              Style="{StaticResource TextBoxTheme}"/>
 
                         <Button Grid.Column="1"
                             Content="Change"
-                            Command="{Binding ChangeApiKeyCommand}"
+                            Command="{Binding ChangeAlphaVantageApiKeyCommand}"
                             ToolTip="Change API key"
                             Style="{StaticResource RedButtonTheme}"
                             Margin="10,0,0,0"/>
                     </Grid>
 
+                    <TextBlock Margin="5,20,0,10">
+                        <Hyperlink CommandParameter="https://www.exchangerate-api.com/"
+                                   Command="{Binding GetApiKeyCommand}">
+                            Get ExchangeRate-API key
+                        </Hyperlink>
+                    </TextBlock>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0"
+                             Tag="ExchangeRate-API key" 
+                             Text="{Binding ExchangeRateApiKey}"
+                             HorizontalAlignment="Stretch"
+                             Style="{StaticResource TextBoxTheme}"/>
+
+                        <Button Grid.Column="1"
+                            Content="Change"
+                            Command="{Binding ChangeExchangeRateApiKeyCommand}"
+                            ToolTip="Change API key"
+                            Style="{StaticResource RedButtonTheme}"
+                            Margin="10,0,0,0"/>
+                    </Grid>
                 </StackPanel>
             </Expander>
         </StackPanel>

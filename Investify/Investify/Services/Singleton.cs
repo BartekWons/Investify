@@ -1,6 +1,5 @@
 ﻿using Investify.Core;
 using Investify.MVVM.Model;
-using System.Windows.Controls;
 
 namespace Investify.Services
 {
@@ -41,6 +40,19 @@ namespace Investify.Services
 			set 
 			{ 
 				_currentView = value;
+				OnPropertyChanged();
+			}
+		}
+
+
+		private string _currencySymbol;
+
+		public string CurrencySymbol
+		{
+			get { return _currencySymbol; }
+			set 
+			{ 
+				_currencySymbol = value; 
 				OnPropertyChanged();
 			}
 		}

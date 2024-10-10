@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Data\currencies_symbols_and_names.json" />
     <None Remove="Assets\Fonts\Gowun_Batang\GowunBatang-Bold.ttf" />
     <None Remove="Assets\Fonts\Gowun_Batang\GowunBatang-Regular.ttf" />
     <None Remove="Assets\Fonts\Roboto\Roboto-Black.ttf" />
@@ -40,9 +41,11 @@
     <None Remove="Assets\Images\Logo\log_in.png" />
     <None Remove="Assets\Images\Logo\sign_up.png" />
     <None Remove="Assets\Sounds\click_sound.wav" />
+    <None Remove="Config\config.xml" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Data\currencies_symbols_and_names.json" />
     <Resource Include="Assets\Fonts\Gowun_Batang\GowunBatang-Bold.ttf" />
     <Resource Include="Assets\Fonts\Gowun_Batang\GowunBatang-Regular.ttf" />
     <Resource Include="Assets\Fonts\Yeseva_One\YesevaOne-Regular.ttf" />
@@ -80,11 +83,13 @@
     <Resource Include="Assets\Images\Logo\log_in.png" />
     <Resource Include="Assets\Images\Logo\sign_up.png" />
     <Resource Include="Assets\Sounds\click_sound.wav" />
+    <Resource Include="Config\config.xml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
     <PackageReference Include="MySql.Data" Version="9.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />

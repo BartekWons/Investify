@@ -18,12 +18,22 @@ namespace Investify.MVVM.Model.API
             return await GetDataAsync<T>(queryURL);
         }
 
+        public static async Task<T> GetSupportedCurrencies<T>(string apiKey) where T : new()
+        {
+            string queryURL = $"https://v6.exchangerate-api.com/v6/{apiKey}/codes";
+            if (await GetDataAsync<T>(queryURL) is T tmp) 
+                return tmp;
+            else 
+                return new T();
+
+        }
+
         private static async Task<T> GetDataAsync<T>(string queryURL)
         {
             try
             {
                 T parsedData;
-                using (HttpClient client = new HttpClient())
+                using (HttpClient client = new())
                 {
                     HttpResponseMessage response = await client.GetAsync(queryURL);
                     response.EnsureSuccessStatusCode();
@@ -31,7 +41,6 @@ namespace Investify.MVVM.Model.API
                     string jsonsData = await response.Content.ReadAsStringAsync();
 
                     parsedData = JsonConvert.DeserializeObject<T>(jsonsData);
-                    Debug.WriteLine(parsedData);
                 }
                 return parsedData;
             }

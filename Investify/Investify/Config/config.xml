@@ -3,5 +3,6 @@
   <ServerConfig />
   <ApiKeys>
     <AlphaVantaageApiKey>demo</AlphaVantaageApiKey>
+    <ExchangeRateApiKey>demo</ExchangeRateApiKey>
   </ApiKeys>
 </Config>
